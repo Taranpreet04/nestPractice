@@ -1,0 +1,156 @@
+🧩 Database Design Practice – Scenario 1 (Beginner → Intermediate)
+📌 Scenario: Online Shopping System
+
+You are building a backend for an e-commerce application.
+
+🔹 Requirements
+
+Users
+
+Users can register and login
+
+Each user has:
+
+Name
+
+Email (unique)
+
+Password
+
+Phone number
+
+Created date
+
+Products
+
+Products have:
+
+Name
+
+Description
+
+Price
+
+Stock quantity
+
+Status (active / inactive)
+
+Categories
+
+Each product belongs to one category
+
+A category can have many products
+
+Orders
+
+A user can place multiple orders
+
+Each order has:
+
+Order date
+
+Status (pending, shipped, delivered, cancelled)
+
+Total amount
+
+Order Items
+
+One order can contain multiple products
+
+Each product can be in many orders
+
+Store:
+
+Quantity
+
+Price at time of purchase
+
+Payments
+
+Each order has one payment
+
+Payment includes:
+
+Payment method (card, UPI, COD)
+
+Payment status
+
+Paid date
+
+🛠️ Your Task (IMPORTANT)
+
+Design the database by answering these steps:
+
+Step 1️⃣
+
+List all tables you think are required.
+
+Step 2️⃣
+
+For each table, write:
+
+Columns
+
+Primary Key (PK)
+
+Step 3️⃣
+
+Define relationships:
+
+One-to-One
+
+One-to-Many
+
+Many-to-Many
+
+(You can write in plain text — no need for SQL yet)
+---------------------------------------------------------------------------------
+Table: users
+- id (PK)
+- name
+- email
+- password
+- phone
+- created_at
+
+Table : Categories
+- id (PK)
+- name
+- description
+id one to many relationship with Products
+
+Table : products
+- id (PK)
+- category_id (FK to Categories.id)
+- name
+- description
+- price
+- stock
+- status (active / inactive)
+- created_at
+
+Table: orders
+- id(PK)
+- userId
+- status (pending, shipped, delivered, cancelled)
+- amount 
+- items :[{id, quantity}]
+- created_at
+
+one to many relationship with users
+
+
+Table: order_items
+- id (PK)
+- order_id (FK → orders.id)
+- product_id (FK → products.id)
+- quantity
+- price_at_purchase
+many to many products & ordess
+
+Table: payments
+- id (PK)
+- order_id (FK)
+- payment_method
+- payment_status
+- paid_at
