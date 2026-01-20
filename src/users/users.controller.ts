@@ -7,6 +7,7 @@ export class UsersController {
 
   @Post()
   createUser(@Body() body) {
+    
     return this.usersService.create(body);
   }
 
